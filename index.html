@@ -23,7 +23,39 @@
     <link rel="stylesheet" href="assets/css/glightbox.min.css">
     <link rel="stylesheet" href="assets/css/main.css">
 
-<style></style>
+    <style>
+        /* Base styles */
+        .app-store-button {
+            display: inline-block;
+            width: 200px;
+            height: auto;
+        }
+        .app-store-button img {
+            width: 100%;
+            height: auto;
+        }
+        
+        /* Mobile styles */
+        @media only screen and (max-width: 767px) {
+            .app-store-button {
+                width: 180px;
+                margin: 0 auto;
+                display: block;
+            }
+            .hero-content {
+                text-align: center;
+            }
+            .hero-content .button {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 20px;
+            }
+            .hero-content .button .btn-alt {
+                margin: 0 auto;
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -50,7 +82,9 @@
                                 <img src="assets/images/logo/puff-off-graphic-logo-opt.png" alt="PuffOff Logo">
                             </a>
                             <div class="button home-btn">
-                                <a href="https://apps.apple.com/app/apple-store/id6737568318" class="btn">Download Now</a>
+                                <a href="https://apps.apple.com/app/apple-store/id6737568318" class="app-store-button">
+                                    <img src="assets/images/ios-download.svg" alt="Download on the App Store">
+                                </a>
                             </div>
                         </nav>
                         <!-- End Navbar -->
@@ -71,8 +105,9 @@
                         <h1>Quit Vaping<br>One Step at a Time</h1>
                         <p>Track cravings, save money, and embrace a healthier you with personalized support from PuffOff.</p>
                         <div class="button">
-                            <a href="about-us.html" class="btn">Learn More</a>
-                            <a href="privacy-policy.html" class="btn btn-alt">Privacy Policy</a>
+                            <a href="https://apps.apple.com/app/apple-store/id6737568318" class="app-store-button">
+                                <img src="assets/images/ios-download.svg" alt="Download on the App Store">
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -179,8 +214,9 @@
                     <h2>Download PuffOff & Start Quitting Today</h2>
                 </div>
                 <div class="col-lg-6 text-end">
-                    <a href="https://apps.apple.com/app/apple-store/id6737568318" class="btn"><i class="lni lni-apple"></i> App Store</a>
-                    <a href="#" class="btn btn-alt disabled" style="opacity: 0.6;"><i class="lni lni-play-store"></i> Coming to Google Play</a>
+                    <a href="https://apps.apple.com/app/apple-store/id6737568318" class="app-store-button">
+                        <img src="assets/images/ios-download.svg" alt="Download on the App Store">
+                    </a>
                 </div>
             </div>
         </div>

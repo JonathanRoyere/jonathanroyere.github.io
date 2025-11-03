@@ -1081,8 +1081,7 @@ ol {
 /* Section Title */
 .section-title {
   text-align: center;
-  margin-bottom: 80px;
-  padding: 0 300px;
+  padding: 0 15%;
   position: relative;
   z-index: 5;
 }
@@ -1582,7 +1581,12 @@ ol {
 
 @media (max-width: 767px) {
   .header {
-    padding: 18px 0 !important;
+    padding: 130px 0 18px 0 !important;
+    text-align: center;
+  }
+
+  .navbar {
+    justify-content: center !important;
   }
   .header .mobile-menu-btn .toggler-icon {
     background-color: #fff;
@@ -5117,4 +5121,32 @@ blockquote span {
 
 .footer .copyright-area p a:hover {
   color: #8C9DF0;
+}
+
+
+
+.mastfoot {
+  display: none !important;
+}
+
+.inline-container {
+  margin: 0 auto;
+}
+
+
+
+
+
+.mt-10 {
+  margin-top: 10px;
+}
+
+
+.text--white  {
+  color: #fff;
+}
+
+
+.text--center {
+  text-align: center;
 }

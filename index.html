@@ -600,7 +600,7 @@
             }
             
             .trust-indicators {
-                flex-direction: column;
+               
                 gap: 15px;
             }
         }
@@ -865,7 +865,7 @@
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-6 col-12">
-                    <div class="image wow fadeInLeft" data-wow-delay=".3s">
+                    <div class="image cta-img-2 wow fadeInLeft" data-wow-delay=".3s">
                         <img src="assets/images/cta-img-2.png" alt="PuffOff Features">
                     </div>
                 </div>
@@ -1024,7 +1024,7 @@
     <!-- End Footer -->
 
     <script>
-        window.onload = function(e){ 
+        document.addEventListener('DOMContentLoaded', function() {
         // Global variables for tracking
         let currentSpots = 72;
         let countdownEndTime = null;
@@ -1059,14 +1059,12 @@
             '12 minutes ago',
             '15 minutes ago'
         ];
-        
-        document.addEventListener('DOMContentLoaded', function() {
-            // Initialize countdown end time (72 hours from now)
+            // Initialize countdown end time (3 days and 2 hours from now)
             const savedEndTime = localStorage.getItem('puffoff-countdown-end');
             if (savedEndTime) {
                 countdownEndTime = parseInt(savedEndTime);
             } else {
-                countdownEndTime = new Date().getTime() + (72 * 60 * 60 * 1000); // 72 hours
+                countdownEndTime = new Date().getTime() + ((3 * 24 + 2) * 60 * 60 * 1000); // 3 days and 2 hours
                 localStorage.setItem('puffoff-countdown-end', countdownEndTime.toString());
             }
             
@@ -1074,6 +1072,11 @@
             const savedSpots = localStorage.getItem('puffoff-spots-remaining');
             if (savedSpots) {
                 currentSpots = parseInt(savedSpots);
+                // Reset to 72 if spots got too low
+                if (currentSpots < 5) {
+                    currentSpots = 72;
+                    localStorage.setItem('puffoff-spots-remaining', currentSpots.toString());
+                }
             } else {
                 currentSpots = 72;
                 localStorage.setItem('puffoff-spots-remaining', currentSpots.toString());
@@ -1084,7 +1087,14 @@
             lifetimeCTAs.forEach(cta => {
                 cta.addEventListener('click', function(event) {
                     event.preventDefault();
-                    document.getElementById('lifetime-promo').scrollIntoView({
+                    // Account for sticky banner height when scrolling
+                    const stickyBar = document.getElementById('sticky-cta');
+                    const stickyBarHeight = stickyBar ? stickyBar.offsetHeight : 60;
+                    const targetElement = document.getElementById('lifetime-promo');
+                    const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - stickyBarHeight;
+                    
+                    window.scrollTo({
+                        top: targetPosition,
                         behavior: 'smooth'
                     });
                 });
@@ -1146,8 +1156,8 @@
                         }
                     }
                 } else {
-                    // Timer expired - reset to 72 hours
-                    countdownEndTime = new Date().getTime() + (72 * 60 * 60 * 1000);
+                    // Timer expired - reset to 3 days and 2 hours
+                    countdownEndTime = new Date().getTime() + ((3 * 24 + 2) * 60 * 60 * 1000);
                     localStorage.setItem('puffoff-countdown-end', countdownEndTime.toString());
                 }
             }
@@ -1235,7 +1245,6 @@
             // Start the signup simulation after initial delay
             setTimeout(scheduleNextSignup, Math.random() * 15000 + 10000); // 10-25 seconds initial delay
         });
-    }
     </script>
 
 
@@ -1251,7 +1260,12 @@
     padding: 16px 30px !important;
     border-radius: 30px !important;
     text-decoration: none !important;
+    transition: .3s ease-in-out !important;
     }
+
+      .btn-primary:hover {
+        background: linear-gradient(45deg, #ff8e53, #ff8e53) !important;
+      }
 
 
     #field_0 {

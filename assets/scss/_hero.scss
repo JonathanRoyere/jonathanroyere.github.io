@@ -69,15 +69,15 @@
         }
 
         .button {
-            margin-top: 50px;
+           // margin-top: 50px;
 
             @media #{$md} {
-                margin-top: 30px !important;
+              //  margin-top: 30px !important;
                 width: 100%;
             }
 
             @media #{$xs} {
-                margin-top: 30px;
+              //  margin-top: 30px;
                 width: 100%;
             }
 

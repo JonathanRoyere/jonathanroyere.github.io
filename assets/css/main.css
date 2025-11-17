@@ -2091,13 +2091,13 @@ ol {
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {
   .hero-area {
-    padding: 150px 0 100px 0;
+    padding: 80px 0 80px 0;
   }
 }
 
 @media (max-width: 767px) {
   .hero-area {
-    padding: 110px 0 80px 0;
+    padding: 80px 10px;
   }
 }
 
@@ -2106,7 +2106,7 @@ ol {
   position: relative;
   z-index: 1;
   text-align: left;
-  padding: 280px 0 220px 0;
+  padding: 180px 0 220px 0;
 }
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {
@@ -2138,20 +2138,18 @@ ol {
   color: #fff;
 }
 
-.hero-area .hero-content .button {
-  margin-top: 50px;
-}
+
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {
   .hero-area .hero-content .button {
-    margin-top: 30px !important;
+   
     width: 100%;
   }
 }
 
 @media (max-width: 767px) {
   .hero-area .hero-content .button {
-    margin-top: 30px;
+ 
     width: 100%;
   }
 }

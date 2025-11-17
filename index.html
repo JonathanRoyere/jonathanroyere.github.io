@@ -21,6 +21,8 @@
     <link rel="stylesheet" href="assets/css/animate.css">
     <link rel="stylesheet" href="assets/css/tiny-slider.css">
     <link rel="stylesheet" href="assets/css/glightbox.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css">
     <link rel="stylesheet" href="assets/css/main.css">
 
     <style>
@@ -765,6 +767,75 @@
                 max-width: none;
             }
         }
+        
+        /* Slider Styles */
+        .slider-slide {
+            display: none;
+        }
+        
+        .slider-slide.active {
+            display: block;
+        }
+        
+        .slider-dots .dot {
+            width: 12px;
+            height: 12px;
+            background-color: rgba(102, 126, 234, 0.5);
+            border-radius: 50%;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        
+        .slider-dots .dot.active {
+            background-color: #667eea;
+        }
+        
+        .slider-dots .dot:hover {
+            background-color: rgba(102, 126, 234, 0.8);
+        }
+        
+        /* Slick Slider Custom Styles */
+        .feature-slider {
+            position: relative;
+            margin-bottom: 40px; /* Add space for dots below image */
+        }
+        
+        .feature-slider .slick-dots {
+            position: absolute;
+            bottom: -30px; /* Position dots below the image */
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+        }
+        
+        .feature-slider .slick-dots li {
+            margin: 0 4px;
+            width: 12px;
+            height: 12px;
+        }
+        
+        .feature-slider .slick-dots li button {
+            width: 12px;
+            height: 12px;
+            padding: 0;
+            background-color: rgba(102, 126, 234, 0.5);
+            border-radius: 50%;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        
+        .feature-slider .slick-dots li button:before {
+            display: none; /* Hide default pseudo-element */
+        }
+        
+        .feature-slider .slick-dots li.slick-active button {
+            background-color: #667eea;
+        }
+        
+        .feature-slider .slick-dots li:hover button {
+            background-color: rgba(102, 126, 234, 0.8);
+        }
     </style>
 </head>
 
@@ -815,7 +886,7 @@
                         <!-- Start Navbar -->
                         <nav class="navbar navbar-expand-lg" style="justify-content: space-between; padding: 20px 0;">
                             <a class="navbar-brand" href="index.html">
-                                <img src="assets/images/logo/puff-off-graphic-logo-opt.png" alt="PuffOff Logo">
+                                <img src="assets/images/logo/puff-off-logo-white.png" alt="PuffOff Logo">
                             </a>
                             <div class="button home-btn">
                                 <a href="https://apps.apple.com/app/apple-store/id6737568318" class="app-store-button">
@@ -861,7 +932,17 @@
             <div class="row align-items-center">
                 <div class="col-lg-6 col-12">
                     <div class="image cta-img-2 wow fadeInLeft" data-wow-delay=".3s">
-                        <img src="assets/images/cta-img-2.jpg" alt="PuffOff Features">
+                        <div class="feature-slider">
+                            <div>
+                                <img src="assets/images/slider-img-1.jpg" alt="PuffOff Features" style="max-width: 100%; height: auto; border-radius: 15px;">
+                            </div>
+                            <div>
+                                <img src="assets/images/slider-img-2.jpg" alt="PuffOff Features" style="max-width: 100%; height: auto; border-radius: 15px;">
+                            </div>
+                            <div>
+                                <img src="assets/images/slider-img-3.jpg" alt="PuffOff Features" style="max-width: 100%; height: auto; border-radius: 15px;">
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="col-lg-6 col-12">
@@ -1015,8 +1096,10 @@
     </footer>
     <!-- End Footer -->
 
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
+        $(document).ready(function() {
         // Global variables for tracking
         let currentSpots = 72;
         let countdownEndTime = null;
@@ -1236,6 +1319,20 @@
             
             // Start the signup simulation after initial delay
             setTimeout(scheduleNextSignup, Math.random() * 15000 + 10000); // 10-25 seconds initial delay
+            
+            // Initialize Slick Slider
+            $('.feature-slider').slick({
+                dots: true,
+                infinite: true,
+                speed: 500,
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                autoplay: true,
+                autoplaySpeed: 3000,
+                pauseOnHover: true,
+                arrows: false,
+                dotsClass: 'slick-dots custom-dots'
+            });
         });
     </script>
 

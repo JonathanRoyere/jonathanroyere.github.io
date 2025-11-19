@@ -845,7 +845,7 @@
         <div class="container">
             <div class="cta-content">
                 <div class="cta-text">
-                    🔥 FREE Lifetime Access - Only <span class="sticky-spots">72</span> spots left!
+                    🔥 FREE Lifetime Access - Only 200 codes being given away!
                 </div>
                 <div class="timer-display">
                     ⏰ Expires in: <span id="sticky-timer">72:00:00</span>
@@ -861,7 +861,7 @@
             <div class="icon">✓</div>
             <div class="text">
                 <div><span class="name" id="notification-name">Sarah M.</span> just claimed their free lifetime access!</div>
-                <div>Only <span class="spots sticky-spots">72</span> spots remaining</div>
+                <div>Limited to 200 codes - Don't miss out!</div>
             </div>
         </div>
     </div>
@@ -1004,12 +1004,12 @@
 
         <div class="form-cta-price-block">
           <div class="form-cta-price-current">$0</div>
-          <div class="form-cta-limited-text">Limited to 100 People</div>
+          <div class="form-cta-limited-text">Limited to 200 Codes</div>
         </div>
       </div>
 
       <div class="form-cta-alert">
-        <span>Only <span class="sticky-spots">72</span> spots remaining!</span>
+        <span>Only 200 codes being given away!</span>
       </div>
 
             <script async src="https://eomail5.com/form/351fa600-b67f-11f0-a46d-a3f3fd0a90b6.js" data-form="351fa600-b67f-11f0-a46d-a3f3fd0a90b6"></script>
@@ -1134,28 +1134,23 @@
             '12 minutes ago',
             '15 minutes ago'
         ];
-            // Initialize countdown end time (3 days and 2 hours from now)
+            // Initialize countdown end time (November 23rd at midnight)
             const savedEndTime = localStorage.getItem('puffoff-countdown-end');
             if (savedEndTime) {
                 countdownEndTime = parseInt(savedEndTime);
             } else {
-                countdownEndTime = new Date().getTime() + ((3 * 24 + 2) * 60 * 60 * 1000); // 3 days and 2 hours
+                // Set to November 23rd, 2025 at midnight (00:00:00)
+                const targetDate = new Date();
+                targetDate.setMonth(10); // November (0-indexed, so 10 = November)
+                targetDate.setDate(23);
+                targetDate.setFullYear(2025);
+                targetDate.setHours(0, 0, 0, 0);
+                countdownEndTime = targetDate.getTime();
                 localStorage.setItem('puffoff-countdown-end', countdownEndTime.toString());
             }
             
-            // Initialize spots remaining
-            const savedSpots = localStorage.getItem('puffoff-spots-remaining');
-            if (savedSpots) {
-                currentSpots = parseInt(savedSpots);
-                // Reset to 72 if spots got too low
-                if (currentSpots < 5) {
-                    currentSpots = 72;
-                    localStorage.setItem('puffoff-spots-remaining', currentSpots.toString());
-                }
-            } else {
-                currentSpots = 72;
-                localStorage.setItem('puffoff-spots-remaining', currentSpots.toString());
-            }
+            // Remove spots functionality - no longer needed
+            currentSpots = 200; // Fixed value for display purposes only
             
             // Smooth scrolling for lifetime promo CTAs
             const lifetimeCTAs = document.querySelectorAll('.lifetime-cta, .sticky-cta-bar .cta-button');
@@ -1237,29 +1232,14 @@
                 }
             }
             
-            // Update spots remaining display
+            // Update spots remaining display (now just shows fixed message)
             function updateSpotsDisplay() {
-                // Ensure currentSpots is a number
-                currentSpots = parseInt(currentSpots);
-                if (currentSpots > 0) {
-                    localStorage.setItem('puffoff-spots-remaining', currentSpots.toString());
-                }
-                
-                // Update all spots elements
-                const allSpotsElements = document.querySelectorAll('.sticky-spots, #stats-spots, #urgency-spots');
-                allSpotsElements.forEach(el => {
-                    if (el) el.textContent = currentSpots;
-                });
+                // No longer needed - spots counter removed
             }
             
-            // Decrease spots and show notification
+            // Decrease spots and show notification (now just shows notification)
             function decreaseSpots() {
-                if (currentSpots > 1) {
-                    currentSpots--;
-                    localStorage.setItem('puffoff-spots-remaining', currentSpots.toString());
-                    updateSpotsDisplay();
-                    showSignupNotification();
-                }
+                showSignupNotification();
             }
             
             // Show signup notification
@@ -1281,7 +1261,7 @@
                     if (textEl) {
                         textEl.innerHTML = `
                             <div><span class="name">${randomName}</span> ${randomMessage}</div>
-                            <div><span class="time">${randomTime}</span> • Only <span class="spots sticky-spots">${currentSpots}</span> spots remaining</div>
+                            <div><span class="time">${randomTime}</span> • Limited to 200 codes!</div>
                         `;
                     }
                     
@@ -1302,7 +1282,6 @@
             
             // Initialize everything
             updateCountdown();
-            updateSpotsDisplay();
             handleStickyBar();
             
             // Update countdown every second
